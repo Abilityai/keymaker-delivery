@@ -1,0 +1,44 @@
+# File-backed client portfolio (the default backend of scripts/portfolio.py).
+# Sample clients for a fictional agency - edit freely. States must match CLAUDE.md.
+clients:
+  - slug: harbor-vale-logistics
+    name: Harbor & Vale Logistics
+    state: Active
+    champion: "Dana Okafor, Head of Operations"
+    call_slot: "Tuesdays 10:00"
+    last_contact: "2026-09-29"
+    implementations:
+      - name: Dispatch board agent
+        state: Building
+        owner: "Your name"
+        next_step: "Connect the driver roster sheet"
+        updated: "2026-09-29"
+      - name: Daily operations brief
+        state: Live
+        owner: "Your name"
+        next_step: "Review with Dana on 2026-10-06"
+        updated: "2026-09-22"
+  - slug: cedar-point-clinics
+    name: Cedar Point Clinics
+    state: Active
+    champion: "Luis Ferreira, COO"
+    call_slot: "Thursdays 15:00"
+    last_contact: "2026-09-08"
+    implementations:
+      - name: Patient intake triage
+        state: Testing
+        owner: "Sam Reyes"
+        next_step: "Luis to approve the triage rules"
+        updated: "2026-09-08"
+  - slug: brightline-studio
+    name: Brightline Studio
+    state: Onboarding
+    champion: "Mei Tanaka, Founder"
+    call_slot: ""
+    last_contact: "2026-09-30"
+    implementations:
+      - name: Client reporting agent
+        state: Scoped
+        owner: "Your name"
+        next_step: "Kickoff call"
+        updated: "2026-09-30"

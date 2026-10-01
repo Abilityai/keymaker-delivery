@@ -1,0 +1,71 @@
+# Keymaker Delivery - a Trinity agent template
+# Part of the Keymaker agency starter set (keymaker.agency). Public, zero-credential by default.
+name: keymaker-delivery
+display_name: "Keymaker Delivery"
+description: |
+  The delivery desk of Keymaker, an agency that sets up automation on Trinity for other
+  companies. Keeps the client portfolio honest: every client with a health score, every
+  implementation with a state and a next step, and a stall flagged before the client notices.
+  Reads the handoff Keymaker Sales writes when a deal is won and turns it into a client record
+  and a project.
+
+  Runs out of the box on a file-backed portfolio (clients/clients.yaml). Assign the project-*
+  skills from the Skills Library and add a GitHub token, and each client project becomes a
+  GitHub Issues registry.
+tagline: "Every client has a health score and a next step."
+version: "0.1.0"
+author: "Keymaker (keymaker.agency)"
+
+resources:
+  cpu: "1"
+  memory: "2g"
+
+avatar_prompt: >
+  A delivery lead at a wall of client cards with green, amber and red dots, holding a
+  tablet, attentive and calm. Daylight studio, photographic.
+
+capabilities:
+  - client-portfolio
+  - health-scoring
+  - stall-detection
+  - project-registry
+
+commands:
+  - name: clients
+    description: The portfolio - every client with health, state and the next step
+    usage: /clients [--stalled]
+  - name: client-status
+    description: One client in depth, or record what changed
+    usage: /client-status <client> [--note "..."] [--state <state>]
+
+folders:
+  expose: true     # reports/ readable by the agency's other agents
+  consume: true    # reads drafts/*-handoff.md from Keymaker Sales
+
+# Optional. Without it the portfolio stays in clients/clients.yaml. With it, the project-*
+# skills from the Skills Library keep each client's work as GitHub Issues.
+credentials:
+  env_file:
+    - GITHUB_TOKEN
+
+credential_setup:
+  - name: GITHUB_TOKEN
+    title: GitHub token
+    description: Lets the project-* library skills manage client projects as GitHub Issues in a repo you name. Leave empty to stay file-backed.
+    required: false
+    secret: true
+    format: secret
+
+metrics:
+  - name: active_clients
+    type: gauge
+    description: Clients in the Active state
+  - name: health_avg
+    type: gauge
+    description: Average health score across active clients (0-100)
+  - name: stalled_implementations
+    type: gauge
+    description: Implementations with no change for 14+ days
+  - name: implementations_live
+    type: counter
+    description: Implementations moved to Live

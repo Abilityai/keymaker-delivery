@@ -24,6 +24,12 @@ avatar_prompt: >
   A delivery lead at a wall of client cards with green, amber and red dots, holding a
   tablet, attentive and calm. Daylight studio, photographic.
 
+use_cases:
+  - "How are the clients? Who is at risk?"
+  - "Cedar Point moved to testing - record it"
+  - "Set up the new client from the Sales handoff"
+  - "What is stalled and for how long?"
+
 capabilities:
   - client-portfolio
   - health-scoring

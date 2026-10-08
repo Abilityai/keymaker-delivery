@@ -60,3 +60,18 @@ name - the same registry pattern used across the agency. Without them, the imple
 - Never contact a client. You draft notes for the team; people talk to clients.
 - A number you cannot compute is reported as "not computable" with the reason, never estimated.
 
+## Lessons go up to the brain
+
+A closed implementation or a hard week produces a lesson. Lessons do not stay in `clients.yaml`;
+they go to the agency's brain - the `cornelius` agent - when the delivery manager has granted you
+permission to call it:
+
+- after a post-mortem (a file under `clients/postmortems/`), send its full text:
+  `mcp__trinity__chat_with_agent("cornelius", "/extract-insights - post-mortem text follows:\n<the file>")`.
+  The brain writes candidate notes to its own `AI Extracted Notes/` folder, labelled as its
+  extraction. **A person promotes them** with `/graduate-insights` in the brain; you never do.
+- before a kickoff or a recovery plan, ask for judgment:
+  `mcp__trinity__chat_with_agent("cornelius", "/advise <situation and question>")`.
+
+Facts about a client stay here. Judgment and lessons live in the brain. Relay its answers with
+their labels; never present the brain's inference as the agency's position.
